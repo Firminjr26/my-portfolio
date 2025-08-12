@@ -18,7 +18,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             transition: all 0.3s ease;
-            padding-top: 80px; /* Added padding to avoid overlap with fixed nav */
+            padding-top: 80px;
         }
 
         /* Dark mode styles */
@@ -116,7 +116,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            height: 70px; /* Added height to ensure consistent spacing */
+            height: 70px;
         }
 
         .nav-container {
@@ -128,13 +128,41 @@
             padding: 0 20px;
         }
 
+        .nav-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
         .nav-right {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        /* Theme Toggle Button */
         .theme-toggle {
             background: none;
             border: 2px solid #667eea;
@@ -167,29 +195,6 @@
         body.dark-mode .theme-toggle:hover {
             background: #8892f0;
             color: #1a1a2e;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #667eea;
         }
 
         .hamburger {
@@ -547,37 +552,56 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
+            body {
+                padding-top: 0; /* Remove padding for mobile */
+            }
+
+            nav {
+                height: auto;
+                padding: 1rem;
+            }
+
+            .nav-container {
                 flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-header {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
                 background: rgba(255, 255, 255, 0.95);
                 backdrop-filter: blur(10px);
-                width: 100%;
+                padding: 1rem 0;
                 text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 2rem 0;
             }
 
             .nav-menu.active {
-                left: 0;
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 0.5rem 0;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 1rem;
             }
 
             .hamburger {
                 display: flex;
-            }
-
-            .nav-right {
-                flex-direction: column;
-                gap: 1rem;
-                margin-top: 1rem;
-            }
-
-            .theme-toggle {
-                order: -1;
-                margin-bottom: 1rem;
             }
 
             .hamburger.active span:nth-child(2) {
@@ -621,14 +645,6 @@
             .section-content {
                 padding: 2rem 1.5rem;
             }
-
-            body {
-                padding-top: 70px; /* Adjusted for mobile view */
-            }
-
-            nav {
-                height: 70px; /* Consistent height for mobile */
-            }
         }
 
         /* CV Modal */
@@ -671,7 +687,20 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">Your Portfolio</div>
+            <div class="nav-header">
+                <div class="logo">Your Portfolio</div>
+                <div class="nav-right">
+                    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+                        <span class="theme-icon">🌙</span>
+                        <span class="theme-text">Dark</span>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="showSection('about')">About</a></li>
@@ -681,17 +710,6 @@
                 <li><a href="#" onclick="showSection('education')">Education</a></li>
                 <li><a href="#" onclick="showSection('contact')">Contact</a></li>
             </ul>
-            <div class="nav-right">
-                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
-                    <span class="theme-icon">🌙</span>
-                    <span class="theme-text">Dark</span>
-                </button>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
         </div>
     </nav>
 
@@ -1073,15 +1091,10 @@
 
         // Section navigation
         function showSection(sectionName) {
-            // Hide all sections
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Show selected section
             document.getElementById(sectionName).classList.add('active');
-            
-            // Animate skill bars when skills section is shown
             if (sectionName === 'skills') {
                 setTimeout(animateSkills, 500);
             }
@@ -1104,7 +1117,6 @@
             document.getElementById('cvModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside of it
         window.onclick = function(event) {
             const modal = document.getElementById('cvModal');
             if (event.target == modal) {
@@ -1121,7 +1133,6 @@
             
             if (name && email && subject && message) {
                 alert('Thank you for your message! I will get back to you soon.');
-                // Reset form
                 document.getElementById('name').value = '';
                 document.getElementById('email').value = '';
                 document.getElementById('subject').value = '';
@@ -1131,18 +1142,13 @@
             }
         }
 
-        // Initialize skill bars animation on page load for home section
         document.addEventListener('DOMContentLoaded', function() {
-            // Load saved theme
             loadTheme();
-            
-            // Set initial width to 0 for animation effect
             document.querySelectorAll('.skill-progress').forEach(bar => {
                 bar.style.width = '0%';
             });
         });
 
-        // Smooth scrolling effect (optional enhancement)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
