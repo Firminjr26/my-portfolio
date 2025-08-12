@@ -18,7 +18,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             transition: all 0.3s ease;
-            padding-top: 80px;
+            padding-top: 120px; /* Increased padding to prevent overlap */
         }
 
         /* Dark mode styles */
@@ -34,6 +34,11 @@
 
         body.dark-mode nav {
             background: rgba(20, 20, 35, 0.95);
+        }
+
+        body.dark-mode .nav-menu {
+            background: rgba(30, 30, 45, 0.95); /* Improved readability in dark mode */
+            color: #e0e0e0; /* Ensure text is readable */
         }
 
         body.dark-mode .nav-menu a {
