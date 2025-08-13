@@ -105,11 +105,11 @@
         }
 
         body.dark-mode .contact-item h4 {
-            color: #ffffff; /* More visible white text */
+            color: #ffffff;
         }
 
         body.dark-mode .contact-item p {
-            color: #d0d0d0; /* Lighter gray for better contrast */
+            color: #d0d0d0;
         }
 
         .container {
@@ -254,7 +254,7 @@
         }
 
         .section-content {
-            background: rgba(250, 250, 250, 0.95); /* Very light gray, distinct from body */
+            background: rgba(250, 250, 250, 0.95);
             backdrop-filter: blur(10px);
             padding: 2rem 1.5rem;
             border-radius: 20px;
@@ -308,7 +308,7 @@
 
         .home-text p {
             font-size: 1rem;
-            color: #333; /* Darker for contrast */
+            color: #333;
             margin-bottom: 1.5rem;
             line-height: 1.5;
         }
@@ -360,15 +360,19 @@
 
         .about-gallery {
             display: flex;
+            flex-wrap: nowrap;
             gap: 1rem;
             justify-content: center;
+            overflow-x: auto;
+            padding-bottom: 1rem;
         }
 
         .about-img {
             width: 100%;
-            max-width: 300px;
+            max-width: 200px;
             border-radius: 10px;
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .about-text h2 {
@@ -378,14 +382,14 @@
         }
 
         .about-text p {
-            color: #333; /* Darker for contrast */
+            color: #333;
             margin-bottom: 1rem;
             text-align: left;
         }
 
         /* Experience Section */
         .experience-item {
-            background: #c0c0c0; /* Noticeably darker than section-content */
+            background: #c0c0c0;
             padding: 1.5rem;
             border-radius: 15px;
             margin-bottom: 1.5rem;
@@ -413,7 +417,7 @@
         .experience-item p {
             font-size: 0.9rem;
             line-height: 1.5;
-            color: #333; /* Darker for contrast */
+            color: #333;
         }
 
         /* Projects Section */
@@ -425,7 +429,7 @@
         }
 
         .project-card {
-            background: #c0c0c0; /* Noticeably darker than section-content */
+            background: #c0c0c0;
             padding: 1.5rem;
             border-radius: 15px;
             transition: transform 0.3s ease;
@@ -442,7 +446,7 @@
         }
 
         .project-card p {
-            color: #333; /* Darker for contrast */
+            color: #333;
             margin-bottom: 1rem;
             font-size: 0.9rem;
             line-height: 1.5;
@@ -507,7 +511,7 @@
 
         /* Education Section */
         .education-item {
-            background: #c0c0c0; /* Noticeably darker than section-content */
+            background: #c0c0c0;
             padding: 1.5rem;
             border-radius: 15px;
             margin-bottom: 1.5rem;
@@ -533,7 +537,7 @@
         .education-item p {
             font-size: 0.9rem;
             line-height: 1.5;
-            color: #333; /* Darker for contrast */
+            color: #333;
         }
 
         /* Contact Section */
@@ -544,7 +548,7 @@
             margin-top: 1.5rem;
             justify-content: center;
             align-items: center;
-            min-height: 400px; /* Ensure enough height for vertical centering */
+            min-height: 400px;
         }
 
         .contact-info {
@@ -554,25 +558,25 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 600px; /* Constrain for centering */
-            padding: 2rem; /* Add padding for visual clarity */
+            max-width: 90%;
+            padding: 1rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: #c0c0c0; /* Noticeably darker than section-content */
-            border-radius: 15px;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem;
+            background: #c0c0c0;
+            border-radius: 10px;
             width: 100%;
-            max-width: 500px; /* Constrain for centering */
-            margin: 0 auto; /* Center the contact item */
+            max-width: 500px;
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: #4a7dff;
             border-radius: 50%;
             display: flex;
@@ -584,16 +588,23 @@
         }
 
         .contact-item h4 {
-            margin-bottom: 0.3rem;
-            font-size: 1.1rem;
-            color: #333; /* Darker for contrast */
-            font-weight: 600;
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+            color: #333;
         }
 
         .contact-item p {
-            font-size: 1rem;
-            color: #333; /* Darker for contrast */
-            line-height: 1.4;
+            font-size: 0.8rem;
+            color: #333;
+        }
+
+        .contact-item a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #4a7dff;
         }
 
         .contact-form {
@@ -647,13 +658,13 @@
         }
 
         .section-header p {
-            color: #333; /* Darker for contrast */
+            color: #333;
             font-size: 1rem;
         }
 
         /* Hidden sections */
         .section {
-            display: block; /* Changed from none to block for mobile scrolling */
+            display: block;
         }
 
         .section.active {
@@ -673,7 +684,7 @@
         }
 
         .modal-content {
-            background: #fafafa; /* Match section-content */
+            background: #fafafa;
             margin: 10% auto;
             padding: 20px;
             border-radius: 10px;
@@ -705,6 +716,41 @@
             color: #8892f0;
         }
 
+        /* Mobile Styles */
+        @media (max-width: 767px) {
+            .about-content {
+                flex-direction: column-reverse; /* Images above text */
+            }
+
+            .about-gallery {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .about-img {
+                max-width: 150px;
+                height: 200px;
+            }
+
+            .contact-info {
+                max-width: 100%;
+                padding: 0.5rem;
+            }
+
+            .contact-item {
+                max-width: 90%;
+                flex-wrap: nowrap;
+            }
+
+            .contact-item > div {
+                flex: 1;
+                text-align: right;
+            }
+        }
+
         /* Desktop Styles */
         @media (min-width: 768px) {
             body {
@@ -727,7 +773,6 @@
                 font-size: 1.5rem;
             }
 
-            /* Keep hamburger menu on desktop */
             .hamburger {
                 display: flex;
             }
@@ -766,7 +811,6 @@
                 font-size: 0.9rem;
             }
 
-            /* All sections visible for scrolling */
             section {
                 padding: 100px 0;
                 min-height: 100vh;
@@ -809,9 +853,9 @@
             }
 
             .about-gallery {
-                display: flex;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                 gap: 1rem;
-                justify-content: center;
             }
 
             .projects-grid {
@@ -844,7 +888,7 @@
             .contact-item {
                 width: 100%;
                 max-width: 500px;
-                margin: 0 auto; /* Center the contact item */
+                margin: 0 auto;
             }
 
             .profile-img {
@@ -1008,7 +1052,6 @@
                             <span class="tech-tag">MySQL</span>
                             <span class="tech-tag">AJAX</span>
                         </div>
-                        
                     </div>
                     <div class="project-card">
                         <h3>Contact Management System</h3>
@@ -1203,7 +1246,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," class="btn btn-primary" style="margin-top: 1rem;">Send Me an Email</a>
+                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," class="btn btn-primary" style="margin-top: 1rem;">Send me an email</a>
                 </div>
             </div>
         </div>
@@ -1223,7 +1266,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Valence Mwigani. All rights reserved. Built with passion and modern web technologies</p>
+        <p>&copy; 2025 Jesse Mallya. All rights reserved. Built with passion and modern web technologies</p>
     </footer>
 
     <script>
@@ -1239,7 +1282,6 @@
             if (body.classList.contains('dark-mode')) {
                 themeIcon.textContent = '☀️';
                 themeText.textContent = 'Light';
-                // Use in-memory storage instead of localStorage
                 window.currentTheme = 'dark';
             } else {
                 themeIcon.textContent = '🌙';
@@ -1254,7 +1296,6 @@
             const themeIcon = themeToggle.querySelector('.theme-icon');
             const themeText = themeToggle.querySelector('.theme-text');
             
-            // Default to light theme
             window.currentTheme = 'light';
             themeIcon.textContent = '🌙';
             themeText.textContent = 'Dark';
@@ -1286,10 +1327,8 @@
                         if (entry.isIntersecting) {
                             const currentSection = entry.target.id;
                             
-                            // Remove active class from all nav links
                             navLinks.forEach(link => link.classList.remove('active'));
                             
-                            // Add active class to current section's nav link
                             const activeLink = document.querySelector(`.nav-menu a[onclick="showSection('${currentSection}')"]`);
                             if (activeLink) {
                                 activeLink.classList.add('active');
@@ -1308,7 +1347,6 @@
         // Enhanced section navigation
         function showSection(sectionName) {
             if (window.innerWidth >= 768) {
-                // Desktop: smooth scroll to section
                 const targetSection = document.getElementById(sectionName);
                 if (targetSection) {
                     targetSection.scrollIntoView({
@@ -1317,7 +1355,6 @@
                     });
                 }
             } else {
-                // Mobile: smooth scroll to section
                 const targetSection = document.getElementById(sectionName);
                 if (targetSection) {
                     targetSection.scrollIntoView({
@@ -1327,7 +1364,6 @@
                 }
             }
             
-            // Close mobile menu when section changes
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             
@@ -1339,13 +1375,11 @@
         // Handle window resize
         function handleResize() {
             if (window.innerWidth >= 768) {
-                // Desktop: show all sections for scrolling
                 document.querySelectorAll('.section').forEach(section => {
                     section.style.display = 'flex';
                 });
                 initScrollNavigation();
             } else {
-                // Mobile: ensure all sections are visible for scrolling
                 document.querySelectorAll('.section').forEach(section => {
                     section.style.display = 'block';
                 });
@@ -1357,18 +1391,14 @@
             loadTheme();
             handleResize();
             
-            // Initialize skill bars at 0%
             document.querySelectorAll('.skill-progress').forEach(bar => {
                 bar.style.width = '0%';
             });
             
-            // Add resize listener
             window.addEventListener('resize', handleResize);
             
-            // Initialize skills animation observer
             initSkillsAnimation();
             
-            // Trigger skills animation on page load if skills section is visible
             setTimeout(() => {
                 const skillsSection = document.getElementById('skills');
                 if (skillsSection) {
@@ -1442,7 +1472,6 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             loadTheme();
-            // Initialize skill bars at 0%
             document.querySelectorAll('.skill-progress').forEach(bar => {
                 bar.style.width = '0%';
             });
