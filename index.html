@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valence Mwigani - Full Stack Developer</title>
+    <title>Jesse Mallya - Full Stack Developer</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #a0c4ff 0%, #b9fbc0 100%);
             min-height: 100vh;
             transition: all 0.3s ease;
         }
@@ -104,6 +104,14 @@
             color: #e0e0e0;
         }
 
+        body.dark-mode .contact-item h4 {
+            color: #ffffff; /* More visible white text */
+        }
+
+        body.dark-mode .contact-item p {
+            color: #d0d0d0; /* Lighter gray for better contrast */
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -112,7 +120,7 @@
 
         /* Navigation - Mobile First */
         nav {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(245, 245, 245, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem;
             position: fixed;
@@ -133,7 +141,7 @@
         .logo {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #667eea;
+            color: #4a7dff;
         }
 
         .nav-right {
@@ -144,7 +152,7 @@
 
         .theme-toggle {
             background: none;
-            border: 2px solid #667eea;
+            border: 2px solid #4a7dff;
             border-radius: 50px;
             padding: 6px 10px;
             cursor: pointer;
@@ -152,13 +160,13 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            color: #667eea;
+            color: #4a7dff;
             font-size: 0.8rem;
             font-weight: 500;
         }
 
         .theme-toggle:hover {
-            background: #667eea;
+            background: #4a7dff;
             color: white;
         }
 
@@ -196,7 +204,7 @@
             top: 70px;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(245, 245, 245, 0.98);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             list-style: none;
@@ -222,7 +230,7 @@
         }
 
         .nav-menu a:hover {
-            color: #667eea;
+            color: #4a7dff;
         }
 
         .hamburger.active span:nth-child(2) {
@@ -246,7 +254,7 @@
         }
 
         .section-content {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(250, 250, 250, 0.95); /* Very light gray, distinct from body */
             backdrop-filter: blur(10px);
             padding: 2rem 1.5rem;
             border-radius: 20px;
@@ -267,7 +275,7 @@
 
         .profile-container {
             width: 100%;
-            max-width: 350px;
+            max-width: 300px;
             margin-bottom: 1rem;
         }
 
@@ -275,8 +283,8 @@
             width: 100%;
             height: auto;
             aspect-ratio: 3/4;
-            border-radius: 15px;
-            border: 4px solid #667eea;
+            border-radius: 10px;
+            border: 4px solid #4a7dff;
             object-fit: cover;
             object-position: center;
         }
@@ -285,7 +293,7 @@
             font-size: 2rem;
             color: #333;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4a7dff, #9b59b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -293,14 +301,14 @@
 
         .home-text .subtitle {
             font-size: 1rem;
-            color: #667eea;
+            color: #4a7dff;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .home-text p {
             font-size: 1rem;
-            color: #666;
+            color: #333; /* Darker for contrast */
             margin-bottom: 1.5rem;
             line-height: 1.5;
         }
@@ -327,14 +335,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4a7dff, #9b59b6);
             color: white;
         }
 
         .btn-secondary {
             background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #4a7dff;
+            border: 2px solid #4a7dff;
         }
 
         .btn:hover {
@@ -350,11 +358,18 @@
             text-align: center;
         }
 
+        .about-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
         .about-img {
             width: 100%;
             max-width: 300px;
-            margin: 0 auto;
-            border-radius: 15px;
+            border-radius: 10px;
+            object-fit: cover;
         }
 
         .about-text h2 {
@@ -364,18 +379,18 @@
         }
 
         .about-text p {
-            color: #666;
+            color: #333; /* Darker for contrast */
             margin-bottom: 1rem;
             text-align: left;
         }
 
         /* Experience Section */
         .experience-item {
-            background: #f8f9ff;
+            background: #c0c0c0; /* Noticeably darker than section-content */
             padding: 1.5rem;
             border-radius: 15px;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #4a7dff;
         }
 
         .experience-item h3 {
@@ -385,7 +400,7 @@
         }
 
         .experience-item .company {
-            color: #667eea;
+            color: #4a7dff;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -399,6 +414,7 @@
         .experience-item p {
             font-size: 0.9rem;
             line-height: 1.5;
+            color: #333; /* Darker for contrast */
         }
 
         /* Projects Section */
@@ -410,7 +426,7 @@
         }
 
         .project-card {
-            background: #f8f9ff;
+            background: #c0c0c0; /* Noticeably darker than section-content */
             padding: 1.5rem;
             border-radius: 15px;
             transition: transform 0.3s ease;
@@ -427,7 +443,7 @@
         }
 
         .project-card p {
-            color: #666;
+            color: #333; /* Darker for contrast */
             margin-bottom: 1rem;
             font-size: 0.9rem;
             line-height: 1.5;
@@ -441,7 +457,7 @@
         }
 
         .tech-tag {
-            background: #667eea;
+            background: #4a7dff;
             color: white;
             padding: 0.3rem 0.7rem;
             border-radius: 15px;
@@ -477,7 +493,7 @@
         .skill-bar {
             flex: 1;
             height: 8px;
-            background: #e0e0e0;
+            background: #d0d0d0;
             border-radius: 4px;
             margin-left: 1rem;
             overflow: hidden;
@@ -485,14 +501,14 @@
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4a7dff, #9b59b6);
             border-radius: 4px;
             transition: width 2s ease;
         }
 
         /* Education Section */
         .education-item {
-            background: #f8f9ff;
+            background: #c0c0c0; /* Noticeably darker than section-content */
             padding: 1.5rem;
             border-radius: 15px;
             margin-bottom: 1.5rem;
@@ -505,7 +521,7 @@
         }
 
         .education-item .institution {
-            color: #667eea;
+            color: #4a7dff;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -518,7 +534,7 @@
         .education-item p {
             font-size: 0.9rem;
             line-height: 1.5;
-            margin-top: 0.5rem;
+            color: #333; /* Darker for contrast */
         }
 
         /* Contact Section */
@@ -527,12 +543,20 @@
             flex-direction: column;
             gap: 2rem;
             margin-top: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px; /* Ensure enough height for vertical centering */
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px; /* Constrain for centering */
+            padding: 2rem; /* Add padding for visual clarity */
         }
 
         .contact-item {
@@ -540,14 +564,17 @@
             align-items: center;
             gap: 1rem;
             padding: 1rem;
-            background: #f8f9ff;
+            background: #c0c0c0; /* Noticeably darker than section-content */
             border-radius: 10px;
+            width: 100%;
+            max-width: 500px; /* Constrain for centering */
+            margin: 0 auto; /* Center the contact item */
         }
 
         .contact-icon {
             width: 35px;
             height: 35px;
-            background: #667eea;
+            background: #4a7dff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -560,11 +587,12 @@
         .contact-item h4 {
             margin-bottom: 0.2rem;
             font-size: 0.9rem;
+            color: #333; /* Darker for contrast */
         }
 
         .contact-item p {
             font-size: 0.8rem;
-            color: #666;
+            color: #333; /* Darker for contrast */
         }
 
         .contact-form {
@@ -588,7 +616,7 @@
         .form-group input,
         .form-group textarea {
             padding: 10px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #d0d0d0;
             border-radius: 8px;
             font-size: 0.9rem;
             transition: border-color 0.3s ease;
@@ -597,7 +625,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #4a7dff;
         }
 
         .form-group textarea {
@@ -618,7 +646,7 @@
         }
 
         .section-header p {
-            color: #666;
+            color: #333; /* Darker for contrast */
             font-size: 1rem;
         }
 
@@ -644,7 +672,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: #fafafa; /* Match section-content */
             margin: 10% auto;
             padding: 20px;
             border-radius: 10px;
@@ -668,7 +696,7 @@
 
         /* Active menu item highlighting */
         .nav-menu a.active {
-            color: #667eea;
+            color: #4a7dff;
             font-weight: 700;
         }
 
@@ -709,7 +737,7 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.98);
+                background: rgba(245, 245, 245, 0.98);
                 backdrop-filter: blur(10px);
                 padding: 1rem 0;
                 list-style: none;
@@ -780,6 +808,12 @@
                 text-align: left;
             }
 
+            .about-gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1rem;
+            }
+
             .projects-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -796,17 +830,32 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 3rem;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .contact-info {
+                align-items: center;
+                justify-content: center;
+                max-width: none;
+                padding: 2rem;
+            }
+
+            .contact-item {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto; /* Center the contact item */
             }
 
             .profile-img {
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                aspect-ratio: 1;
+                width: 300px;
+                height: 400px;
+                border-radius: 10px;
+                aspect-ratio: 3/4;
             }
 
             .profile-container {
-                max-width: 200px;
+                max-width: 300px;
             }
         }
     </style>
@@ -815,7 +864,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">Valence Mwigani</div>
+            <div class="logo">Jesse Mallya</div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="showSection('about')">About</a></li>
@@ -845,15 +894,15 @@
             <div class="section-content">
                 <div class="home-content">
                     <div class="profile-container">
-                        <img src="https://via.placeholder.com/350x450/667eea/ffffff?text=Valence+Mwigani" alt="Valence Mwigani - Profile Picture" class="profile-img">
+                        <img src="SUTI1.jpg" alt="Jesse Mallya - Profile Picture" class="profile-img">
                     </div>
                     <div class="home-text">
-                        <h1>Valence Mwigani</h1>
+                        <h1>Jesse Mallya</h1>
                         <div class="subtitle">Full Stack Developer</div>
                         <p>Passionate developer with expertise in creating innovative solutions. I love turning ideas into reality through clean code and beautiful design. Let's create something amazing together!</p>
                         <div class="btn-group">
                             <a href="#" onclick="showSection('projects')" class="btn btn-primary">View My Projects</a>
-                            <a href="#" onclick="openCV()" class="btn btn-secondary">View CV</a>
+                            <a href="#" onclick="openCV()" class="btn btn-secondary">My CV</a>
                             <a href="#" onclick="showSection('contact')" class="btn btn-secondary">Contact Me</a>
                         </div>
                     </div>
@@ -871,11 +920,16 @@
                     <p>Get to know more about who I am and what drives me</p>
                 </div>
                 <div class="about-content">
-                    <img src="https://via.placeholder.com/400x500/667eea/ffffff?text=About+Photo" alt="About Me" class="about-img">
+                    <div class="about-gallery">
+                        <img src="SUTI2.jpg" alt="smart code" class="about-img">
+                        <img src="GRADU.jpg" alt="Graduation Photo" class="about-img">
+                        <!-- Add more images as needed -->
+                    </div>
                     <div class="about-text">
-                        <h2>Hello, I'm Valence Mwigani</h2>
-                        <p>I am a dedicated Full Stack Developer with a passion for technology and innovation. My journey in the tech industry has been driven by curiosity and a desire to solve complex problems through elegant solutions.</p>
-                        <p>With years of experience in software development, I have honed my skills in various technologies and frameworks. I believe in continuous learning and staying updated with the latest industry trends.</p>
+                        <h2>Hello, I'm Jesse Mallya</h2>
+                        <p>I am a dedicated Full Stack Developer with a passion for technology and innovation. I graduated last year with an Ordinary Diploma in Information Technology (IT) Engineering from the Dar es Salaam Institute of Technology, building a strong foundation in both software and hardware concepts</p>
+                        <p>With experience in developing full-stack applications, I have honed my skills across front-end, back-end, and database technologies. I believe in continuous learning and staying up-to-date with the latest trends to deliver efficient, user-focused solutions.</p>
+                        <p>I have worked with three organizations — Bizy Tech Limited, where I completed my first internship; Amani Warehouse Limited, where I am currently employed; and MUA Insurance Tanzania, where I am also currently undertaking an internship.</p>
                         <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community in Tanzania.</p>
                     </div>
                 </div>
@@ -892,22 +946,22 @@
                     <p>My professional journey and career milestones</p>
                 </div>
                 <div class="experience-item">
-                    <h3>Senior Full Stack Developer</h3>
-                    <div class="company">Tech Solutions Tanzania</div>
-                    <div class="date">2022 - Present</div>
-                    <p>Lead development of web applications using modern frameworks. Collaborate with cross-functional teams to deliver high-quality software solutions. Mentor junior developers and contribute to architectural decisions.</p>
+                    <h3>Software Developer</h3>
+                    <div class="company">Bizy Tech Ltd.</div>
+                    <div class="date">2022 - 2023</div>
+                    <p>I did my internship here as a software developer of which i learned more on Java and json. I created my own private project called ONLINE TASK MANAGEMENT SYSTEM>. I learned much other more from my senior developers></p>
                 </div>
                 <div class="experience-item">
-                    <h3>Frontend Developer</h3>
-                    <div class="company">Digital Innovations Ltd.</div>
-                    <div class="date">2020 - 2022</div>
-                    <p>Developed responsive web applications using React and Vue.js. Implemented user interfaces based on design mockups and improved application performance by 40%.</p>
+                    <h3>Web Developer</h3>
+                    <div class="company">Amani Warehouse Ltd.</div>
+                    <div class="date">2025 - Present</div>
+                    <p>I specialize in designing and maintaining websites within a warehouse environment, ensuring smooth digital operations that support logistics and customer interaction. My role includes creating user-friendly interfaces, updating web content, optimizing performance, and aligning the site with our business goals.</p>
                 </div>
                 <div class="experience-item">
-                    <h3>Junior Developer</h3>
-                    <div class="company">StartUp Ventures TZ</div>
-                    <div class="date">2019 - 2020</div>
-                    <p>Built and maintained web applications using HTML, CSS, and JavaScript. Assisted in database design and implementation. Participated in agile development processes.</p>
+                    <h3>Computer Engineer</h3>
+                    <div class="company">MUA insurance Tanzania</div>
+                    <div class="date">2025 - present</div>
+                    <p>I'm doing my internship as a computer engineer dealing with networking, developing and a problem solver at the company, but also looking forward in learning more abt servers.</p>
                 </div>
             </div>
         </div>
@@ -923,37 +977,28 @@
                 </div>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard built for Tanzanian market.</p>
+                        <h3>Online Task Management System</h3>
+                        <p>"A full-stack task management system where the admin can create tasks for users, and users can update their progress for the admin to review. Users can also apply for leave, which the admin can approve or reject. The system includes real-time notifications. It is implemented as a website.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">M-Pesa API</span>
-                        </div>
-                        <a href="#" class="btn btn-primary">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates and team collaboration features for remote teams.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Socket.io</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                        <a href="#" class="btn btn-primary">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>Weather Dashboard</h3>
-                        <p>A responsive weather application with location-based forecasts and interactive charts, specifically designed for East African weather patterns.</p>
-                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">Weather API</span>
-                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">AJAX</span>
                         </div>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        
+                    </div>
+                    <div class="project-card">
+                        <h3>Contact Management System</h3>
+                        <p>Enterprise-level contact management system with social features, built with Java backend and modern frontend technologies. Has advanced CRUD operation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -970,11 +1015,11 @@
                 </div>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h3>Frontend</h3>
+                        <h3>FRONTEND DEVELOPMENT</h3>
                         <div class="skill-item">
                             <span>HTML/CSS</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="95%"></div>
+                                <div class="skill-progress" data-width="100%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -984,67 +1029,79 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span>React</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Vue.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <div class="skill-item">
-                            <span>Node.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Express.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>MongoDB</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Tools & Others</h3>
-                        <div class="skill-item">
-                            <span>Git</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Docker</span>
+                            <span>AJAX</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="65%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span>AWS</span>
+                            <span>jQuery</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Bootstrap</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>BACKEND DEVELOPMENT</h3>
+                        <div class="skill-item">
+                            <span>PHP</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>MySQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="100%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>CRUD operations</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="68%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Form Validation</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="87%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Spring Boot</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="57%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>NETWORKING</h3>
+                        <div class="skill-item">
+                            <span>CCNA</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>System admin</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>IP addressing</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="60%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span>Figma</span>
+                            <span>Hosting</span>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="75%"></div>
                             </div>
@@ -1064,22 +1121,16 @@
                     <p>My academic background and qualifications</p>
                 </div>
                 <div class="education-item">
-                    <h3>Bachelor of Science in Computer Science</h3>
-                    <div class="institution">University of Dar es Salaam</div>
-                    <div class="date">2015 - 2019</div>
-                    <p>Graduated with honors. Focused on software engineering, data structures, and algorithms. Participated in various coding competitions and tech events across Tanzania.</p>
+                    <h3>Ordinary Diploma in Information Technology Engineering</h3>
+                    <div class="institution">Dar es Salaam Institute of Technology</div>
+                    <div class="date">2021 - 2024</div>
+                    <p>Graduated with honors. Focused on software engineering, dataase management and networking. finished with a 4.1 GPA.</p>
                 </div>
                 <div class="education-item">
-                    <h3>Full Stack Web Development Certification</h3>
-                    <div class="institution">Moringa School</div>
-                    <div class="date">2019</div>
-                    <p>Intensive bootcamp covering modern web development technologies including React, Node.js, and database management with focus on African market solutions.</p>
-                </div>
-                <div class="education-item">
-                    <h3>AWS Cloud Practitioner Certification</h3>
-                    <div class="institution">Amazon Web Services</div>
-                    <div class="date">2021</div>
-                    <p>Certified in cloud computing fundamentals and AWS services with emphasis on scalable solutions for emerging markets.</p>
+                    <h3>Bachelor of engineering in Computer Engineering</h3>
+                    <div class="institution">Dar es Salaam Institute of Technology</div>
+                    <div class="date">2024 - present</div>
+                    <p>Currently expanding knowledge in advanced computing, system design, and software engineering principles</p>
                 </div>
             </div>
         </div>
@@ -1099,57 +1150,39 @@
                             <div class="contact-icon">📧</div>
                             <div>
                                 <h4>Email</h4>
-                                <p>valence.mwigani@gmail.com</p>
+                                <p>jessemallya@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
                             <div>
                                 <h4>Phone</h4>
-                                <p>+255 123 456 789</p>
+                                <p>+255 653 294 241</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
                             <div>
                                 <h4>Location</h4>
-                                <p>Arusha, Tanzania</p>
+                                <p>Dar es Salaam, Tanzania</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">💼</div>
                             <div>
                                 <h4>LinkedIn</h4>
-                                <p><a href="https://linkedin.com/in/valence-mwigani" target="_blank">linkedin.com/in/valence-mwigani</a></p>
+                                <p><a href="https://www.linkedin.com/in/jesse-mallya-9a265536a/" target="_blank">linkedin.com/in/Jesse-Mallya</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">🌐</div>
                             <div>
                                 <h4>Website</h4>
-                                <p><a href="https://valencemwigani.tech" target="_blank">valencemwigani.tech</a></p>
+                                <p><a href="https://jesse-mallya-portfolio.vercel.app/" target="_blank">jesse-mallya-portfolio</a></p>
                             </div>
                         </div>
                     </div>
-                    <div class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" onclick="sendMessage()">Send Message</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -1159,15 +1192,10 @@
     <div id="cvModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCV()">&times;</span>
-            <h2>My CV - Valence Mwigani</h2>
+            <h2>My CV - Jesse Mallya</h2>
             <div style="text-align: center; padding: 2rem;">
-                <p>CV content would be displayed here. You can replace this with:</p>
-                <ul style="text-align: left; margin: 1rem 0;">
-                    <li>An embedded PDF viewer</li>
-                    <li>HTML formatted CV content</li>
-                    <li>A download link to your PDF CV</li>
-                </ul>
-                <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Download PDF</a>
+                <embed src="JESSE CV.pdf" type="application/pdf" width="100%" height="600px" style="border: none;" />
+                <a href="JESSE CV.pdf" class="btn btn-primary" style="margin-top: 1rem;" download>Download PDF</a>
             </div>
         </div>
     </div>
