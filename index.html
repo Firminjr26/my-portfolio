@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Valence Mwigani - Full Stack Developer</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,6 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             transition: all 0.3s ease;
-            padding-top: 120px; /* Increased padding to prevent overlap */
         }
 
         /* Dark mode styles */
@@ -37,8 +36,8 @@
         }
 
         body.dark-mode .nav-menu {
-            background: rgba(30, 30, 45, 0.95); /* Improved readability in dark mode */
-            color: #e0e0e0; /* Ensure text is readable */
+            background: rgba(30, 30, 45, 0.95);
+            color: #e0e0e0;
         }
 
         body.dark-mode .nav-menu a {
@@ -111,17 +110,16 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
+        /* Navigation - Mobile First */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 1rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            height: 70px;
         }
 
         .nav-container {
@@ -130,35 +128,11 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .nav-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #667eea;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
             color: #667eea;
         }
 
@@ -172,14 +146,14 @@
             background: none;
             border: 2px solid #667eea;
             border-radius: 50px;
-            padding: 8px 12px;
+            padding: 6px 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             color: #667eea;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
@@ -189,7 +163,7 @@
         }
 
         .theme-toggle .theme-icon {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         body.dark-mode .theme-toggle {
@@ -203,7 +177,7 @@
         }
 
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
         }
@@ -216,10 +190,57 @@
             transition: 0.3s;
         }
 
+        .nav-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            list-style: none;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         /* Sections */
         section {
             min-height: 100vh;
-            padding: 100px 0 50px;
+            padding: 90px 20px 50px;
             display: flex;
             align-items: center;
         }
@@ -227,64 +248,82 @@
         .section-content {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 3rem;
+            padding: 2rem 1.5rem;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Home Section */
+        /* Home Section - Mobile Optimized */
         .home-content {
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 1rem;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid #667eea;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3/4;
+            border-radius: 15px;
+            border: 4px solid #667eea;
             object-fit: cover;
-            margin-bottom: 1rem;
+            object-position: center;
         }
 
         .home-text h1 {
-            font-size: 3rem;
+            font-size: 2rem;
             color: #333;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
+        .home-text .subtitle {
+            font-size: 1rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
         .home-text p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #666;
-            margin-bottom: 2rem;
-            max-width: 600px;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
         .btn-group {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 280px;
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 12px 24px;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            width: 100%;
         }
 
         .btn-primary {
@@ -299,25 +338,27 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* About Section */
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
         }
 
         .about-img {
             width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
             border-radius: 15px;
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #333;
             margin-bottom: 1rem;
         }
@@ -325,20 +366,22 @@
         .about-text p {
             color: #666;
             margin-bottom: 1rem;
+            text-align: left;
         }
 
         /* Experience Section */
         .experience-item {
             background: #f8f9ff;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             border-left: 4px solid #667eea;
         }
 
         .experience-item h3 {
             color: #333;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .experience-item .company {
@@ -353,61 +396,70 @@
             margin-bottom: 1rem;
         }
 
+        .experience-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
         /* Projects Section */
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .project-card {
             background: #f8f9ff;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             transition: transform 0.3s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .project-card h3 {
             color: #333;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
         }
 
         .project-card p {
             color: #666;
             margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
             margin-bottom: 1rem;
         }
 
         .tech-tag {
             background: #667eea;
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
         }
 
         /* Skills Section */
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         .skill-category h3 {
             color: #333;
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .skill-item {
@@ -417,8 +469,13 @@
             margin-bottom: 1rem;
         }
 
+        .skill-item span {
+            font-size: 0.9rem;
+            min-width: 80px;
+        }
+
         .skill-bar {
-            width: 100%;
+            flex: 1;
             height: 8px;
             background: #e0e0e0;
             border-radius: 4px;
@@ -436,14 +493,15 @@
         /* Education Section */
         .education-item {
             background: #f8f9ff;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .education-item h3 {
             color: #333;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .education-item .institution {
@@ -457,18 +515,24 @@
             font-size: 0.9rem;
         }
 
+        .education-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+        }
+
         /* Contact Section */
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 1.5rem;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .contact-item {
@@ -481,8 +545,8 @@
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background: #667eea;
             border-radius: 50%;
             display: flex;
@@ -490,6 +554,17 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-item p {
+            font-size: 0.8rem;
+            color: #666;
         }
 
         .contact-form {
@@ -504,17 +579,18 @@
         }
 
         .form-group label {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: #333;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group textarea {
-            padding: 12px;
+            padding: 10px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
             transition: border-color 0.3s ease;
         }
 
@@ -526,24 +602,24 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 100px;
         }
 
         /* Section Headers */
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #333;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .section-header p {
             color: #666;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         /* Hidden sections */
@@ -553,103 +629,6 @@
 
         .section.active {
             display: flex;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 0; /* Remove padding for mobile */
-            }
-
-            nav {
-                height: auto;
-                padding: 1rem;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-header {
-                width: 100%;
-                justify-content: space-between;
-                margin-bottom: 1rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                padding: 1rem 0;
-                text-align: center;
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu a {
-                padding: 0.5rem 0;
-            }
-
-            .nav-right {
-                width: 100%;
-                justify-content: space-between;
-                margin-top: 1rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .home-text h1 {
-                font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 200px;
-            }
-
-            section {
-                padding: 80px 0 30px;
-            }
-
-            .section-content {
-                padding: 2rem 1.5rem;
-            }
         }
 
         /* CV Modal */
@@ -666,19 +645,19 @@
 
         .modal-content {
             background: white;
-            margin: 5% auto;
+            margin: 10% auto;
             padding: 20px;
             border-radius: 10px;
             width: 90%;
-            max-width: 800px;
-            max-height: 80%;
+            max-width: 500px;
+            max-height: 70%;
             overflow-y: auto;
         }
 
         .close {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
         }
@@ -686,26 +665,126 @@
         .close:hover {
             color: #000;
         }
+
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+
+            nav {
+                padding: 1rem 0;
+                height: 70px;
+            }
+
+            .nav-container {
+                flex-direction: row;
+                align-items: center;
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                background: none;
+                box-shadow: none;
+                gap: 2rem;
+                padding: 0;
+            }
+
+            .nav-menu li {
+                margin: 0;
+            }
+
+            .nav-menu a {
+                padding: 0;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .theme-toggle {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 100px 0 50px;
+            }
+
+            .section-content {
+                padding: 3rem;
+            }
+
+            .home-text h1 {
+                font-size: 3rem;
+            }
+
+            .home-text p {
+                font-size: 1.2rem;
+                max-width: 600px;
+            }
+
+            .btn-group {
+                flex-direction: row;
+                max-width: none;
+            }
+
+            .btn {
+                width: auto;
+                padding: 12px 30px;
+            }
+
+            .about-content {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 3rem;
+                align-items: center;
+                text-align: left;
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                aspect-ratio: 1;
+            }
+
+            .profile-container {
+                max-width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="nav-header">
-                <div class="logo">Your Portfolio</div>
-                <div class="nav-right">
-                    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
-                        <span class="theme-icon">🌙</span>
-                        <span class="theme-text">Dark</span>
-                    </button>
-                    <div class="hamburger" id="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
+            <div class="logo">Valence Mwigani</div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="showSection('about')">About</a></li>
@@ -715,6 +794,17 @@
                 <li><a href="#" onclick="showSection('education')">Education</a></li>
                 <li><a href="#" onclick="showSection('contact')">Contact</a></li>
             </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+                    <span class="theme-icon">🌙</span>
+                    <span class="theme-text">Dark</span>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -723,10 +813,13 @@
         <div class="container">
             <div class="section-content">
                 <div class="home-content">
-                    <img src="https://via.placeholder.com/200x200/667eea/ffffff?text=Your+Photo" alt="Profile Picture" class="profile-img">
+                    <div class="profile-container">
+                        <img src="https://via.placeholder.com/350x450/667eea/ffffff?text=Valence+Mwigani" alt="Valence Mwigani - Profile Picture" class="profile-img">
+                    </div>
                     <div class="home-text">
-                        <h1>Your Name</h1>
-                        <p>Welcome to my portfolio! I'm a passionate developer with expertise in creating innovative solutions. I love turning ideas into reality through clean code and beautiful design. Explore my work and let's create something amazing together.</p>
+                        <h1>Valence Mwigani</h1>
+                        <div class="subtitle">Full Stack Developer</div>
+                        <p>Passionate developer with expertise in creating innovative solutions. I love turning ideas into reality through clean code and beautiful design. Let's create something amazing together!</p>
                         <div class="btn-group">
                             <a href="#" onclick="showSection('projects')" class="btn btn-primary">View My Projects</a>
                             <a href="#" onclick="openCV()" class="btn btn-secondary">View CV</a>
@@ -749,10 +842,10 @@
                 <div class="about-content">
                     <img src="https://via.placeholder.com/400x500/667eea/ffffff?text=About+Photo" alt="About Me" class="about-img">
                     <div class="about-text">
-                        <h2>Hello, I'm Your Name</h2>
-                        <p>I am a dedicated professional with a passion for technology and innovation. My journey in the tech industry has been driven by curiosity and a desire to solve complex problems through elegant solutions.</p>
+                        <h2>Hello, I'm Valence Mwigani</h2>
+                        <p>I am a dedicated Full Stack Developer with a passion for technology and innovation. My journey in the tech industry has been driven by curiosity and a desire to solve complex problems through elegant solutions.</p>
                         <p>With years of experience in software development, I have honed my skills in various technologies and frameworks. I believe in continuous learning and staying updated with the latest industry trends.</p>
-                        <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community.</p>
+                        <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community in Tanzania.</p>
                     </div>
                 </div>
             </div>
@@ -768,20 +861,20 @@
                     <p>My professional journey and career milestones</p>
                 </div>
                 <div class="experience-item">
-                    <h3>Senior Software Developer</h3>
-                    <div class="company">Tech Company Inc.</div>
+                    <h3>Senior Full Stack Developer</h3>
+                    <div class="company">Tech Solutions Tanzania</div>
                     <div class="date">2022 - Present</div>
                     <p>Lead development of web applications using modern frameworks. Collaborate with cross-functional teams to deliver high-quality software solutions. Mentor junior developers and contribute to architectural decisions.</p>
                 </div>
                 <div class="experience-item">
                     <h3>Frontend Developer</h3>
-                    <div class="company">Digital Solutions Ltd.</div>
+                    <div class="company">Digital Innovations Ltd.</div>
                     <div class="date">2020 - 2022</div>
                     <p>Developed responsive web applications using React and Vue.js. Implemented user interfaces based on design mockups and improved application performance by 40%.</p>
                 </div>
                 <div class="experience-item">
                     <h3>Junior Developer</h3>
-                    <div class="company">StartUp Ventures</div>
+                    <div class="company">StartUp Ventures TZ</div>
                     <div class="date">2019 - 2020</div>
                     <p>Built and maintained web applications using HTML, CSS, and JavaScript. Assisted in database design and implementation. Participated in agile development processes.</p>
                 </div>
@@ -800,18 +893,18 @@
                 <div class="projects-grid">
                     <div class="project-card">
                         <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.</p>
+                        <p>A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard built for Tanzanian market.</p>
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">M-Pesa API</span>
                         </div>
                         <a href="#" class="btn btn-primary">View Project</a>
                     </div>
                     <div class="project-card">
                         <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates and team collaboration features.</p>
+                        <p>A collaborative task management application with real-time updates and team collaboration features for remote teams.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Vue.js</span>
                             <span class="tech-tag">Express</span>
@@ -822,11 +915,11 @@
                     </div>
                     <div class="project-card">
                         <h3>Weather Dashboard</h3>
-                        <p>A responsive weather application with location-based forecasts and interactive charts.</p>
+                        <p>A responsive weather application with location-based forecasts and interactive charts, specifically designed for East African weather patterns.</p>
                         <div class="project-tech">
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Weather API</span>
                             <span class="tech-tag">CSS3</span>
                         </div>
                         <a href="#" class="btn btn-primary">View Project</a>
@@ -941,21 +1034,21 @@
                 </div>
                 <div class="education-item">
                     <h3>Bachelor of Science in Computer Science</h3>
-                    <div class="institution">University of Technology</div>
+                    <div class="institution">University of Dar es Salaam</div>
                     <div class="date">2015 - 2019</div>
-                    <p>Graduated with honors. Focused on software engineering, data structures, and algorithms. Participated in various coding competitions and tech events.</p>
+                    <p>Graduated with honors. Focused on software engineering, data structures, and algorithms. Participated in various coding competitions and tech events across Tanzania.</p>
                 </div>
                 <div class="education-item">
                     <h3>Full Stack Web Development Certification</h3>
-                    <div class="institution">Tech Academy</div>
+                    <div class="institution">Moringa School</div>
                     <div class="date">2019</div>
-                    <p>Intensive bootcamp covering modern web development technologies including React, Node.js, and database management.</p>
+                    <p>Intensive bootcamp covering modern web development technologies including React, Node.js, and database management with focus on African market solutions.</p>
                 </div>
                 <div class="education-item">
                     <h3>AWS Cloud Practitioner Certification</h3>
                     <div class="institution">Amazon Web Services</div>
                     <div class="date">2021</div>
-                    <p>Certified in cloud computing fundamentals and AWS services.</p>
+                    <p>Certified in cloud computing fundamentals and AWS services with emphasis on scalable solutions for emerging markets.</p>
                 </div>
             </div>
         </div>
@@ -975,14 +1068,14 @@
                             <div class="contact-icon">📧</div>
                             <div>
                                 <h4>Email</h4>
-                                <p>your.email@example.com</p>
+                                <p>valence.mwigani@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
                             <div>
                                 <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
+                                <p>+255 123 456 789</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -996,7 +1089,14 @@
                             <div class="contact-icon">💼</div>
                             <div>
                                 <h4>LinkedIn</h4>
-                                <p><a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+                                <p><a href="https://linkedin.com/in/valence-mwigani" target="_blank">linkedin.com/in/valence-mwigani</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🌐</div>
+                            <div>
+                                <h4>Website</h4>
+                                <p><a href="https://valencemwigani.tech" target="_blank">valencemwigani.tech</a></p>
                             </div>
                         </div>
                     </div>
@@ -1028,7 +1128,7 @@
     <div id="cvModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCV()">&times;</span>
-            <h2>My CV</h2>
+            <h2>My CV - Valence Mwigani</h2>
             <div style="text-align: center; padding: 2rem;">
                 <p>CV content would be displayed here. You can replace this with:</p>
                 <ul style="text-align: left; margin: 1rem 0;">
@@ -1054,29 +1154,25 @@
             if (body.classList.contains('dark-mode')) {
                 themeIcon.textContent = '☀️';
                 themeText.textContent = 'Light';
-                localStorage.setItem('theme', 'dark');
+                // Use in-memory storage instead of localStorage
+                window.currentTheme = 'dark';
             } else {
                 themeIcon.textContent = '🌙';
                 themeText.textContent = 'Dark';
-                localStorage.setItem('theme', 'light');
+                window.currentTheme = 'light';
             }
         }
 
-        // Load saved theme on page load
+        // Load theme on page load
         function loadTheme() {
-            const savedTheme = localStorage.getItem('theme');
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = themeToggle.querySelector('.theme-icon');
             const themeText = themeToggle.querySelector('.theme-text');
             
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Light';
-            } else {
-                themeIcon.textContent = '🌙';
-                themeText.textContent = 'Dark';
-            }
+            // Default to light theme
+            window.currentTheme = 'light';
+            themeIcon.textContent = '🌙';
+            themeText.textContent = 'Dark';
         }
 
         // Navigation functionality
@@ -1100,6 +1196,11 @@
                 section.classList.remove('active');
             });
             document.getElementById(sectionName).classList.add('active');
+            
+            // Close mobile menu when section changes
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
             if (sectionName === 'skills') {
                 setTimeout(animateSkills, 500);
             }
@@ -1122,6 +1223,7 @@
             document.getElementById('cvModal').style.display = 'none';
         }
 
+        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('cvModal');
             if (event.target == modal) {
@@ -1147,13 +1249,16 @@
             }
         }
 
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             loadTheme();
+            // Initialize skill bars at 0%
             document.querySelectorAll('.skill-progress').forEach(bar => {
                 bar.style.width = '0%';
             });
         });
 
+        // Prevent default anchor behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
