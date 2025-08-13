@@ -26,90 +26,93 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
-        body.dark-mode .section-content {
-            background: rgba(30, 30, 45, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        body.dark-mode nav {
-            background: rgba(20, 20, 35, 0.95);
-        }
-
-        body.dark-mode .nav-menu {
-            background: rgba(30, 30, 45, 0.95);
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .nav-menu a {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .nav-menu a:hover {
-            color: #667eea;
-        }
-
-        body.dark-mode .hamburger span {
-            background: #e0e0e0;
-        }
-
-        body.dark-mode .home-text h1,
-        body.dark-mode .about-text h2,
-        body.dark-mode .section-header h2,
-        body.dark-mode .experience-item h3,
-        body.dark-mode .project-card h3,
-        body.dark-mode .skill-category h3,
-        body.dark-mode .education-item h3 {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .home-text p,
-        body.dark-mode .about-text p,
-        body.dark-mode .section-header p,
-        body.dark-mode .experience-item p,
-        body.dark-mode .project-card p,
-        body.dark-mode .education-item p {
-            color: #b0b0b0;
-        }
-
-        body.dark-mode .experience-item,
-        body.dark-mode .project-card,
-        body.dark-mode .education-item,
-        body.dark-mode .contact-item {
-            background: rgba(40, 40, 60, 0.8);
-        }
-
-        body.dark-mode .experience-item .company,
-        body.dark-mode .education-item .institution {
-            color: #8892f0;
-        }
-
-        body.dark-mode .experience-item .date,
-        body.dark-mode .education-item .date {
-            color: #888;
-        }
-
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group textarea {
-            background: rgba(40, 40, 60, 0.8);
-            border-color: #555;
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .form-group label {
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .modal-content {
-            background: rgba(30, 30, 45, 0.98);
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .contact-item h4 {
-            color: #ffffff;
-        }
-
-        body.dark-mode .contact-item p {
-            color: #d0d0d0;
+        /* Apply dark mode based on system preference */
+        @media (prefers-color-scheme: dark) {
+            body:not(.light-mode) {
+                color: #e0e0e0;
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+            body:not(.light-mode) .section-content {
+                background: rgba(30, 30, 45, 0.95);
+                backdrop-filter: blur(10px);
+            }
+            body:not(.light-mode) nav {
+                background: rgba(20, 20, 35, 0.95);
+            }
+            body:not(.light-mode) .nav-menu {
+                background: rgba(30, 30, 45, 0.95);
+                color: #e0e0e0;
+            }
+            body:not(.light-mode) .nav-menu a {
+                color: #e0e0e0;
+            }
+            body:not(.light-mode) .nav-menu a:hover {
+                color: #667eea;
+            }
+            body:not(.light-mode) .hamburger span {
+                background: #e0e0e0;
+            }
+            body:not(.light-mode) .home-text h1,
+            body:not(.light-mode) .about-text h2,
+            body:not(.light-mode) .section-header h2,
+            body:not(.light-mode) .experience-item h3,
+            body:not(.light-mode) .project-card h3,
+            body:not(.light-mode) .skill-category h3,
+            body:not(.light-mode) .education-item h3 {
+                color: #e0e0e0;
+            }
+            body:not(.light-mode) .home-text p,
+            body:not(.light-mode) .about-text p,
+            body:not(.light-mode) .section-header p,
+            body:not(.light-mode) .experience-item p,
+            body:not(.light-mode) .project-card p,
+            body:not(.light-mode) .education-item p {
+                color: #b0b0b0;
+            }
+            body:not(.light-mode) .experience-item,
+            body:not(.light-mode) .project-card,
+            body:not(.light-mode) .education-item,
+            body:not(.light-mode) .contact-item {
+                background: rgba(40, 40, 60, 0.8);
+            }
+            body:not(.light-mode) .experience-item .company,
+            body:not(.light-mode) .education-item .institution {
+                color: #8892f0;
+            }
+            body:not(.light-mode) .experience-item .date,
+            body:not(.light-mode) .education-item .date {
+                color: #888;
+            }
+            body:not(.light-mode) .form-group input,
+            body:not(.light-mode) .form-group textarea {
+                background: rgba(40, 40, 60, 0.8);
+                border-color: #555;
+                color: #e0e0e0;
+            }
+            body:not(.light-mode) .form-group label {
+                color: #e0e0e0;
+            }
+            body:not(.light-mode) .modal-content {
+                background: rgba(30, 30, 45, 0.98);
+                color: #e0e0e0;
+            }
+            body:not(.light-mode) .contact-item h4 {
+                color: #ffffff;
+            }
+            body:not(.light-mode) .contact-item p {
+                color: #d0d0d0;
+            }
+            body:not(.light-mode) .theme-toggle {
+                border-color: #8892f0;
+                color: #8892f0;
+            }
+            body:not(.light-mode) .theme-toggle:hover {
+                background: #8892f0;
+                color: #1a1a2e;
+            }
+            body:not(.light-mode) .nav-menu a.active {
+                color: #8892f0;
+            }
         }
 
         .container {
@@ -172,16 +175,6 @@
 
         .theme-toggle .theme-icon {
             font-size: 1rem;
-        }
-
-        body.dark-mode .theme-toggle {
-            border-color: #8892f0;
-            color: #8892f0;
-        }
-
-        body.dark-mode .theme-toggle:hover {
-            background: #8892f0;
-            color: #1a1a2e;
         }
 
         .hamburger {
@@ -575,7 +568,6 @@
         .contact-icon {
             width: 40px;
             height: 40px;
-            
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -708,10 +700,6 @@
         .nav-menu a.active {
             color: #4a7dff;
             font-weight: 700;
-        }
-
-        body.dark-mode .nav-menu a.active {
-            color: #8892f0;
         }
 
         /* Desktop Styles */
@@ -1175,8 +1163,8 @@
                         <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div>
-                                <h4>  Email</h4>
-                                <p><a href="mailto:jessemallya@gmail.com">  jessemallya@gmail.com</a></p>
+                                <h4>Email</h4>
+                                <p><a href="mailto:jessemallya@gmail.com">jessemallya@gmail.com</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1189,15 +1177,15 @@
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
                             <div>
-                                <h4> Location</h4>
-                                <p> Dar es Salaam, Tanzania</p>
+                                <h4>Location</h4>
+                                <p>Dar es Salaam, Tanzania</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">💼</div>
                             <div>
-                                <h4>  LinkedIn</h4>
-                                <p><a href="https://www.linkedin.com/in/jesse-mallya-9a265536a/" target="_blank">  linkedin.com/in/Jesse-Mallya</a></p>
+                                <h4>LinkedIn</h4>
+                                <p><a href="https://www.linkedin.com/in/jesse-mallya-9a265536a/" target="_blank">linkedin.com/in/Jesse-Mallya</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1247,16 +1235,20 @@
             const themeIcon = themeToggle.querySelector('.theme-icon');
             const themeText = themeToggle.querySelector('.theme-text');
             
-            body.classList.toggle('dark-mode');
-            
             if (body.classList.contains('dark-mode')) {
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Light';
-                window.currentTheme = 'dark';
-            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
                 themeIcon.textContent = '🌙';
                 themeText.textContent = 'Dark';
                 window.currentTheme = 'light';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+                window.currentTheme = 'dark';
+                localStorage.setItem('theme', 'dark');
             }
         }
 
@@ -1265,11 +1257,45 @@
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = themeToggle.querySelector('.theme-icon');
             const themeText = themeToggle.querySelector('.theme-text');
-            
-            window.currentTheme = 'light';
-            themeIcon.textContent = '🌙';
-            themeText.textContent = 'Dark';
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                window.currentTheme = savedTheme;
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    document.body.classList.remove('light-mode');
+                    themeIcon.textContent = '☀️';
+                    themeText.textContent = 'Light';
+                } else {
+                    document.body.classList.add('light-mode');
+                    document.body.classList.remove('dark-mode');
+                    themeIcon.textContent = '🌙';
+                    themeText.textContent = 'Dark';
+                }
+            } else {
+                window.currentTheme = prefersDark ? 'dark' : 'light';
+                if (prefersDark) {
+                    document.body.classList.add('dark-mode');
+                    document.body.classList.remove('light-mode');
+                    themeIcon.textContent = '☀️';
+                    themeText.textContent = 'Light';
+                } else {
+                    document.body.classList.add('light-mode');
+                    document.body.classList.remove('dark-mode');
+                    themeIcon.textContent = '🌙';
+                    themeText.textContent = 'Dark';
+                }
+            }
         }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            const savedTheme = localStorage.getItem('theme');
+            if (!savedTheme) { // Only update if user hasn't manually set a theme
+                loadTheme();
+            }
+        });
 
         // Navigation functionality
         const hamburger = document.getElementById('hamburger');
