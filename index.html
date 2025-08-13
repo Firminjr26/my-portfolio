@@ -360,7 +360,6 @@
 
         .about-gallery {
             display: flex;
-            flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
         }
@@ -562,18 +561,18 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            gap: 1.5rem;
+            padding: 1.5rem;
             background: #c0c0c0; /* Noticeably darker than section-content */
-            border-radius: 10px;
+            border-radius: 15px;
             width: 100%;
             max-width: 500px; /* Constrain for centering */
             margin: 0 auto; /* Center the contact item */
         }
 
         .contact-icon {
-            width: 35px;
-            height: 35px;
+            width: 50px;
+            height: 50px;
             background: #4a7dff;
             border-radius: 50%;
             display: flex;
@@ -581,18 +580,20 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
         }
 
         .contact-item h4 {
-            margin-bottom: 0.2rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
             color: #333; /* Darker for contrast */
+            font-weight: 600;
         }
 
         .contact-item p {
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: #333; /* Darker for contrast */
+            line-height: 1.4;
         }
 
         .contact-form {
@@ -808,9 +809,9 @@
             }
 
             .about-gallery {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                display: flex;
                 gap: 1rem;
+                justify-content: center;
             }
 
             .projects-grid {
@@ -944,7 +945,6 @@
                     <div class="about-gallery">
                         <img src="SUTI2.jpg" alt="smart code" class="about-img">
                         <img src="GRADU.jpg" alt="Graduation Photo" class="about-img">
-                        <!-- Add more images as needed -->
                     </div>
                     <div class="about-text">
                         <h2>Hello, I'm Jesse Mallya</h2>
@@ -1203,7 +1203,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," class="btn btn-primary" style="margin-top: 1rem;">Send me an email</a>
+                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," class="btn btn-primary" style="margin-top: 1rem;">Send Me an Email</a>
                 </div>
             </div>
         </div>
@@ -1223,7 +1223,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Jesse Mallya. All rights reserved. Built with passion and modern web technologies</p>
+        <p>&copy; 2025 Valence Mwigani. All rights reserved. Built with passion and modern web technologies</p>
     </footer>
 
     <script>
