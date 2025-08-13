@@ -1316,29 +1316,19 @@
 
         // Enhanced section navigation
         function showSection(sectionName) {
-            if (window.innerWidth >= 768) {
-                const targetSection = document.getElementById(sectionName);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            } else {
-                const targetSection = document.getElementById(sectionName);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
             
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             
             if (sectionName === 'skills') {
-                setTimeout(animateSkills, 500);
+                animateSkills();
             }
         }
 
@@ -1356,53 +1346,50 @@
             }
         }
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            loadTheme();
-            handleResize();
-            
-            document.querySelectorAll('.skill-progress').forEach(bar => {
-                bar.style.width = '0%';
-            });
-            
-            window.addEventListener('resize', handleResize);
-            
-            initSkillsAnimation();
-            
-            setTimeout(() => {
-                const skillsSection = document.getElementById('skills');
-                if (skillsSection) {
-                    const rect = skillsSection.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        animateSkills();
-                    }
-                }
-            }, 1000);
-        });
-
-        // Scroll-based skill animation for desktop
-        function initSkillsAnimation() {
-            if (window.innerWidth >= 768) {
-                const skillsSection = document.getElementById('skills');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            animateSkills();
-                        }
-                    });
-                }, { threshold: 0.5 });
-                
-                observer.observe(skillsSection);
-            }
-        }
-
         // Animate skill progress bars
         function animateSkills() {
             document.querySelectorAll('.skill-progress').forEach(bar => {
                 const width = bar.getAttribute('data-width');
-                bar.style.width = width;
+                bar.style.transition = 'none'; // Disable transition initially
+                bar.style.width = '0%'; // Ensure starting at 0
+                setTimeout(() => {
+                    bar.style.transition = 'width 2s ease'; // Re-enable transition
+                    bar.style.width = width; // Animate to target width
+                }, 100); // Small delay to ensure reset
             });
         }
+
+        // Initialize skills animation with IntersectionObserver
+        function initSkillsAnimation() {
+            const skillsSection = document.getElementById('skills');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateSkills();
+                        observer.unobserve(skillsSection); // Unobserve after first animation
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observer.observe(skillsSection);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            handleResize();
+            initScrollNavigation();
+            initSkillsAnimation();
+
+            // Check if skills section is in view on initial load
+            const skillsSection = document.getElementById('skills');
+            const rect = skillsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                animateSkills();
+            }
+
+            window.addEventListener('resize', handleResize);
+        });
 
         // CV Modal functions
         function openCV() {
@@ -1429,5 +1416,3 @@
     </script>
 </body>
 </html>
-
-
