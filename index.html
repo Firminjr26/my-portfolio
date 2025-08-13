@@ -666,10 +666,21 @@
             color: #000;
         }
 
+        /* Active menu item highlighting */
+        .nav-menu a.active {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        body.dark-mode .nav-menu a.active {
+            color: #8892f0;
+        }
+
         /* Desktop Styles */
         @media (min-width: 768px) {
             body {
-                padding-top: 120px;
+                padding-top: 0;
+                overflow-x: hidden;
             }
 
             nav {
@@ -687,26 +698,39 @@
                 font-size: 1.5rem;
             }
 
+            /* Keep hamburger menu on desktop */
+            .hamburger {
+                display: flex;
+            }
+
             .nav-menu {
-                display: flex !important;
-                position: static;
-                flex-direction: row;
-                background: none;
-                box-shadow: none;
-                gap: 2rem;
-                padding: 0;
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1rem 0;
+                list-style: none;
+                text-align: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                display: block;
             }
 
             .nav-menu li {
-                margin: 0;
+                margin: 0.8rem 0;
             }
 
             .nav-menu a {
-                padding: 0;
-            }
-
-            .hamburger {
-                display: none;
+                padding: 0.8rem 1rem;
+                font-size: 1.1rem;
+                display: block;
+                transition: all 0.3s ease;
             }
 
             .theme-toggle {
@@ -714,8 +738,15 @@
                 font-size: 0.9rem;
             }
 
+            /* All sections visible for scrolling */
             section {
-                padding: 100px 0 50px;
+                padding: 100px 0;
+                min-height: 100vh;
+                display: flex !important;
+            }
+
+            .section {
+                display: flex !important;
             }
 
             .section-content {
@@ -1190,12 +1221,54 @@
             navMenu.classList.remove('active');
         }));
 
-        // Section navigation
+        // Intersection Observer for scroll-based navigation (desktop only)
+        function initScrollNavigation() {
+            if (window.innerWidth >= 768) {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const currentSection = entry.target.id;
+                            
+                            // Remove active class from all nav links
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            
+                            // Add active class to current section's nav link
+                            const activeLink = document.querySelector(`.nav-menu a[onclick="showSection('${currentSection}')"]`);
+                            if (activeLink) {
+                                activeLink.classList.add('active');
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '-100px 0px -100px 0px'
+                });
+                
+                sections.forEach(section => observer.observe(section));
+            }
+        }
+
+        // Enhanced section navigation
         function showSection(sectionName) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionName).classList.add('active');
+            if (window.innerWidth >= 768) {
+                // Desktop: smooth scroll to section
+                const targetSection = document.getElementById(sectionName);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } else {
+                // Mobile: show/hide sections as before
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionName).classList.add('active');
+            }
             
             // Close mobile menu when section changes
             hamburger.classList.remove('active');
@@ -1203,6 +1276,67 @@
             
             if (sectionName === 'skills') {
                 setTimeout(animateSkills, 500);
+            }
+        }
+
+        // Handle window resize
+        function handleResize() {
+            if (window.innerWidth >= 768) {
+                // Desktop: show all sections for scrolling
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.add('active');
+                });
+                initScrollNavigation();
+            } else {
+                // Mobile: hide all sections except home
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById('home').classList.add('active');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            handleResize();
+            
+            // Initialize skill bars at 0%
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                bar.style.width = '0%';
+            });
+            
+            // Add resize listener
+            window.addEventListener('resize', handleResize);
+            
+            // Initialize skills animation observer
+            initSkillsAnimation();
+            
+            // Trigger skills animation on page load if skills section is visible
+            setTimeout(() => {
+                const skillsSection = document.getElementById('skills');
+                if (skillsSection) {
+                    const rect = skillsSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        animateSkills();
+                    }
+                }
+            }, 1000);
+        });
+
+        // Scroll-based skill animation for desktop
+        function initSkillsAnimation() {
+            if (window.innerWidth >= 768) {
+                const skillsSection = document.getElementById('skills');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateSkills();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(skillsSection);
             }
         }
 
