@@ -652,7 +652,7 @@
 
         /* Hidden sections */
         .section {
-            display: none;
+            display: block; /* Changed from none to block for mobile scrolling */
         }
 
         .section.active {
@@ -732,32 +732,31 @@
             }
 
             .nav-menu {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(245, 245, 245, 0.98);
-                backdrop-filter: blur(10px);
-                padding: 1rem 0;
-                list-style: none;
-                text-align: center;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                z-index: 999;
+                display: flex;
+                position: static;
+                top: auto;
+                left: auto;
+                width: auto;
+                background: none;
+                backdrop-filter: none;
+                padding: 0;
+                box-shadow: none;
+                flex-direction: row;
+                align-items: center;
             }
 
             .nav-menu.active {
-                display: block;
+                display: flex;
             }
 
             .nav-menu li {
-                margin: 0.8rem 0;
+                margin: 0 1rem;
             }
 
             .nav-menu a {
                 padding: 0.8rem 1rem;
                 font-size: 1.1rem;
-                display: block;
+                display: inline-block;
                 transition: all 0.3s ease;
             }
 
@@ -858,6 +857,28 @@
                 max-width: 300px;
             }
         }
+
+        /* Footer Styles */
+        footer {
+            background: #16213e;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4a7dff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -889,7 +910,7 @@
     </nav>
 
     <!-- Home Section -->
-    <section id="home" class="section active">
+    <section id="home" class="section">
         <div class="container">
             <div class="section-content">
                 <div class="home-content">
@@ -949,7 +970,7 @@
                     <h3>Software Developer</h3>
                     <div class="company">Bizy Tech Ltd.</div>
                     <div class="date">2022 - 2023</div>
-                    <p>I did my internship here as a software developer of which i learned more on Java and json. I created my own private project called ONLINE TASK MANAGEMENT SYSTEM>. I learned much other more from my senior developers></p>
+                    <p>I did my internship here as a software developer of which i learned more on Java and json. I created my own private project called ONLINE TASK MANAGEMENT SYSTEM. I learned much other more from my senior developers</p>
                 </div>
                 <div class="experience-item">
                     <h3>Web Developer</h3>
@@ -1182,7 +1203,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," class="btn btn-primary" style="margin-top: 1rem;">Send me an email</a>
                 </div>
             </div>
         </div>
@@ -1199,6 +1220,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Jesse Mallya. All rights reserved. Built with passion and modern web technologies</p>
+    </footer>
 
     <script>
         // Theme toggle functionality
@@ -1291,11 +1317,14 @@
                     });
                 }
             } else {
-                // Mobile: show/hide sections as before
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(sectionName).classList.add('active');
+                // Mobile: smooth scroll to section
+                const targetSection = document.getElementById(sectionName);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
             
             // Close mobile menu when section changes
@@ -1312,15 +1341,14 @@
             if (window.innerWidth >= 768) {
                 // Desktop: show all sections for scrolling
                 document.querySelectorAll('.section').forEach(section => {
-                    section.classList.add('active');
+                    section.style.display = 'flex';
                 });
                 initScrollNavigation();
             } else {
-                // Mobile: hide all sections except home
+                // Mobile: ensure all sections are visible for scrolling
                 document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
+                    section.style.display = 'block';
                 });
-                document.getElementById('home').classList.add('active');
             }
         }
 
