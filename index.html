@@ -337,11 +337,12 @@
         .btn-primary {
             background: linear-gradient(135deg, #4a7dff, #9b59b6);
             color: white;
+            border: 2px solid #4a7dff;
         }
 
         .btn-secondary {
-            background: transparent;
-            color: #4a7dff;
+            background: linear-gradient(135deg, #4a7dff, #9b59b6);
+            color: white;
             border: 2px solid #4a7dff;
         }
 
@@ -574,7 +575,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: #4a7dff;
+            background: linear-gradient(135deg, #a0c4ff 0%, #b9fbc0 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1202,7 +1203,17 @@
                             </div>
                         </div>
                     </div>
-                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," class="btn btn-primary" style="margin-top: 1rem;">Send me an email</a>
+                    <a href="mailto:jessemallya@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Jesse," 
+   class="btn btn-primary" style="
+       margin-top: 1rem; 
+       display: inline-flex; 
+       align-items: center; 
+       justify-content: center; 
+       text-align: center; 
+       padding: 10px 20px;
+   "> Send me an email
+</a>
+
                 </div>
             </div>
         </div>
