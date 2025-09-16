@@ -9,28 +9,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #06b6d4;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --error-color: #ef4444;
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --accent-color: #0ea5e9;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --error-color: #dc2626;
             
-            /* Light theme */
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-tertiary: #f1f5f9;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-tertiary: #64748b;
-            --border-color: #e2e8f0;
-            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            /* Light theme - Updated colors */
+            --bg-primary: #fefefe;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --text-primary: #111827;
+            --text-secondary: #374151;
+            --text-tertiary: #6b7280;
+            --border-color: #e5e7eb;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
             --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             
             /* Glassmorphism */
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(229, 231, 235, 0.5);
         }
 
         [data-theme="dark"] {
@@ -41,7 +41,7 @@
             --text-secondary: #cbd5e1;
             --text-tertiary: #94a3b8;
             --border-color: #334155;
-            --glass-bg: rgba(15, 23, 42, 0.25);
+            --glass-bg: rgba(15, 23, 42, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -65,7 +65,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
+        /* Animated background - Updated */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -73,13 +73,14 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            animation: gradientShift 20s ease infinite;
         }
 
         [data-theme="dark"] .bg-animation {
             background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
         }
 
         @keyframes gradientShift {
@@ -101,16 +102,20 @@
 
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        [data-theme="dark"] .particle {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 1; }
         }
 
         /* Container */
@@ -186,7 +191,7 @@
         .nav-menu a:hover,
         .nav-menu a.active {
             color: var(--primary-color);
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(79, 70, 229, 0.1);
         }
 
         .nav-right {
@@ -211,7 +216,7 @@
         }
 
         .theme-toggle:hover {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(79, 70, 229, 0.1);
             border-color: var(--primary-color);
             color: var(--primary-color);
             transform: translateY(-2px);
@@ -265,7 +270,7 @@
 
         .section-content:hover {
             transform: translateY(-4px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
 
         /* Home Section */
@@ -278,9 +283,9 @@
         }
 
         .profile-container {
-            position: relative;
-            width: 280px;
-            height: 280px;
+            position: center;
+            width: 250px;
+            height: 250px;
             margin: 0 auto;
         }
 
@@ -289,21 +294,15 @@
             height: auto;
             aspect-ratio: 3/4;
             border-radius: 10px;
-            border: 4px solid #4a7dff;
+            border: 4px solid var(--primary-color);
             object-fit: cover;
             object-position: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .profile-img:hover {
             transform: scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
-        }
-
-        
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
         }
 
         .home-text h1 {
@@ -321,7 +320,7 @@
         .subtitle {
             font-size: 20px;
             font-weight: 600;
-            color: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-secondary);
             margin-bottom: 24px;
         }
 
@@ -376,7 +375,7 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
         }
 
         .btn-secondary {
@@ -431,6 +430,7 @@
             max-width: 300px;
             border-radius: 10px;
             object-fit: cover;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .about-img:hover {
@@ -528,13 +528,13 @@
         }
 
         .tech-tag {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(79, 70, 229, 0.1);
             color: var(--primary-color);
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 500;
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(79, 70, 229, 0.2);
         }
 
         /* Skills Section */
@@ -665,7 +665,7 @@
             color: var(--secondary-color);
         }
 
-        /* Modal */
+        /* Modal - Improved */
         .modal {
             display: none;
             position: fixed;
@@ -676,31 +676,115 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
             background: var(--bg-primary);
-            margin: 5% auto;
-            padding: 32px;
+            margin: 20px;
+            padding: 0;
             border-radius: 16px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80%;
-            overflow-y: auto;
+            width: 95%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
             box-shadow: var(--shadow-heavy);
+            animation: slideIn 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
         }
 
         .close {
-            color: var(--text-tertiary);
-            float: right;
-            font-size: 28px;
+            background: none;
+            border: none;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s;
+            color: var(--text-tertiary);
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close:hover {
             color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            max-height: calc(90vh - 120px);
+        }
+
+        .cv-embed {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 8px;
+            background: var(--bg-secondary);
+        }
+
+        .cv-fallback {
+            text-align: center;
+            padding: 48px 24px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .cv-fallback i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .cv-fallback h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .cv-fallback p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
         }
 
         /* Footer */
@@ -727,6 +811,31 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 767px) {
+            .modal-content {
+                margin: 10px;
+                width: calc(100% - 20px);
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 16px 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+                max-height: calc(95vh - 100px);
+            }
+
+            .cv-embed {
+                height: 60vh;
+            }
+        }
+
         @media (min-width: 768px) {
             .nav-menu {
                 display: flex;
@@ -894,18 +1003,18 @@
                         <div class="subtitle">Full Stack Developer</div>
                         <p>Passionate developer with expertise in creating innovative solutions. I love turning ideas into reality through clean code and beautiful design. Let's create something amazing together!</p>
                         <div class="btn-group">
-                            <a href="#" onclick="showSection('projects')" class="btn btn-primary">
+                            <button onclick="showSection('projects')" class="btn btn-primary">
                                 <i class="fas fa-rocket"></i>
                                 View My Projects
-                            </a>
-                            <a href="#" onclick="openCV()" class="btn btn-secondary">
+                            </button>
+                            <button onclick="openCV()" class="btn btn-secondary">
                                 <i class="fas fa-download"></i>
                                 My CV
-                            </a>
-                            <a href="#" onclick="showSection('contact')" class="btn btn-secondary">
+                            </button>
+                            <button onclick="showSection('contact')" class="btn btn-secondary">
                                 <i class="fas fa-envelope"></i>
                                 Contact Me
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1213,11 +1322,21 @@
     <!-- CV Modal -->
     <div id="cvModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeCV()">&times;</span>
-            <h2>My CV - Jesse Mallya</h2>
-            <div style="text-align: center; padding: 2rem;">
-                <embed src="JESSE CV.pdf" type="application/pdf" width="100%" height="600px" style="border: none;" />
-                <a href="JESSE CV.pdf" class="btn btn-primary" style="margin-top: 1rem;" download>Download PDF</a>
+            <div class="modal-header">
+                <h2>Jesse Mallya - CV</h2>
+                <button class="close" onclick="closeCV()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cv-fallback">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>CV Preview</h3>
+                    <embed src="JESSE CV.pdf" class="cv-embed" type="application/pdf" />
+                    <p>Your CV would be displayed here. Please add your CV file to the same directory as this HTML file.</p>
+                    <button class="btn btn-primary" onclick="downloadCV()">
+                        <i class="fas fa-download"></i>
+                        Download CV  
+                    </button>
+                </div>                            
             </div>
         </div>
     </div>
@@ -1241,8 +1360,8 @@
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
                 particlesContainer.appendChild(particle);
             }
         }
@@ -1306,7 +1425,7 @@
             navMenu.classList.remove('active');
         }));
 
-        // Section navigation
+        // Section navigation - Fixed to properly scroll to sections
         function showSection(sectionName) {
             // Update active nav item
             document.querySelectorAll('.nav-menu a').forEach(link => {
@@ -1321,9 +1440,13 @@
             // Scroll to section
             const targetSection = document.getElementById(sectionName);
             if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // Calculate the offset to account for the fixed navbar
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetOffset = targetSection.offsetTop - navHeight - 20; // 20px extra padding
+                
+                window.scrollTo({
+                    top: targetOffset,
+                    behavior: 'smooth'
                 });
             }
             
@@ -1385,35 +1508,58 @@
             });
         }
 
-        // CV Modal functions
+        // CV Modal functions - Improved
         function openCV() {
-            document.getElementById('cvModal').style.display = 'block';
+            const modal = document.getElementById('cvModal');
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
 
         function closeCV() {
-            document.getElementById('cvModal').style.display = 'none';
+            const modal = document.getElementById('cvModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }, 300);
         }
 
         function downloadCV() {
-            // In a real implementation, this would download the actual PDF
-            alert('CV download would start here. Please replace with actual PDF link.');
+            // Create a temporary link to download the CV
+            // Replace 'JESSE CV.pdf' with your actual CV file path
+            const link = document.createElement('a');
+            link.href = 'JESSE CV.pdf';
+            link.download = 'Jesse_Mallya_CV.pdf';
+            link.click();
         }
 
         // Modal close on outside click
         window.onclick = function(event) {
             const modal = document.getElementById('cvModal');
             if (event.target === modal) {
-                modal.style.display = 'none';
+                closeCV();
             }
         }
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('cvModal');
+                if (modal.classList.contains('show')) {
+                    closeCV();
+                }
+            }
+        });
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Remove loading screen
             setTimeout(() => {
-                document.getElementById('loading').style.opacity = '0';
+                const loading = document.getElementById('loading');
+                loading.style.opacity = '0';
                 setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
+                    loading.style.display = 'none';
                 }, 500);
             }, 1000);
             
@@ -1426,6 +1572,23 @@
             if (firstSection) {
                 firstSection.classList.add('visible');
             }
+
+            // Add smooth scrolling for all internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const navHeight = document.querySelector('nav').offsetHeight;
+                        const targetOffset = target.offsetTop - navHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetOffset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
 
         // System theme change listener
@@ -1434,8 +1597,19 @@
                 loadTheme();
             }
         });
+
+        // Performance optimization: Debounce scroll events
+        let ticking = false;
+        function updateOnScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    // Add any scroll-based animations here
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        window.addEventListener('scroll', updateOnScroll);
     </script>
 </body>
 </html>
-
-
