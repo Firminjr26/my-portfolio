@@ -16,21 +16,21 @@
             --warning-color: #d97706;
             --error-color: #dc2626;
             
-            /* Light theme - Updated colors */
-            --bg-primary: #fefefe;
-            --bg-secondary: #f9fafb;
-            --bg-tertiary: #f3f4f6;
-            --text-primary: #111827;
-            --text-secondary: #374151;
-            --text-tertiary: #6b7280;
-            --border-color: #e5e7eb;
-            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            /* Light theme - Updated for more masculine look */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-tertiary: #64748b;
+            --border-color: #cbd5e1;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
+            --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.06);
             
-            /* Glassmorphism */
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(229, 231, 235, 0.5);
+            /* Glassmorphism - Updated for masculine theme */
+            --glass-bg: rgba(248, 250, 252, 0.85);
+            --glass-border: rgba(203, 213, 225, 0.6);
         }
 
         [data-theme="dark"] {
@@ -65,7 +65,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated background - Updated */
+        /* Animated background - Updated for masculine theme */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -73,9 +73,9 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #475569 0%, #64748b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
             background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
+            animation: gradientShift 25s ease infinite;
         }
 
         [data-theme="dark"] .bg-animation {
@@ -273,7 +273,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
 
-        /* Home Section */
+        /* Home Section - Updated for better alignment */
         .home-content {
             display: grid;
             grid-template-columns: 1fr;
@@ -283,26 +283,30 @@
         }
 
         .profile-container {
-            position: center;
-            width: 250px;
-            height: 250px;
+            position: relative;
+            width: 280px;
+            height: 280px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 3/4;
-            border-radius: 10px;
+            height: 100%;
+            border-radius: 20px;
             border: 4px solid var(--primary-color);
             object-fit: cover;
-            object-position: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            object-position: center top;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-medium);
         }
 
         .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.3);
+            border-color: var(--secondary-color);
         }
 
         .home-text h1 {
@@ -430,12 +434,14 @@
             max-width: 300px;
             border-radius: 10px;
             object-fit: cover;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-medium);
         }
 
         .about-img:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-heavy);
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.3);
+            border-color: var(--secondary-color);
         }
 
         .about-text h2 {
@@ -810,8 +816,40 @@
             text-decoration: underline;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive Design - Enhanced */
+        @media (max-width: 480px) {
+            .profile-container {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .profile-img {
+                border-radius: 16px;
+                border-width: 3px;
+            }
+            
+            .home-content {
+                gap: 32px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
         @media (max-width: 767px) {
+            .profile-container {
+                width: 240px;
+                height: 240px;
+            }
+            
             .modal-content {
                 margin: 10px;
                 width: calc(100% - 20px);
@@ -854,6 +892,12 @@
             .home-content {
                 grid-template-columns: 1fr 1.2fr;
                 text-align: left;
+                gap: 64px;
+            }
+            
+            .profile-container {
+                width: 320px;
+                height: 320px;
             }
 
             .about-content {
@@ -876,6 +920,19 @@
 
             .skills-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .profile-container {
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1200px) {
+            .profile-container {
+                width: 380px;
+                height: 380px;
             }
         }
 
