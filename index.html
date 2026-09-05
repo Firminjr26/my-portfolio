@@ -51,12 +51,13 @@
             --on: #fff7f1;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
             font-family: "Plus Jakarta Sans", system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            overflow-x: hidden;
         }
         body::before {
             content: "";
@@ -122,7 +123,7 @@
         .btn-a:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(224,122,74,0.28); }
         .btn-b { background: transparent; color: var(--text); border-color: var(--line-2); }
         .btn-b:hover { border-color: var(--accent); color: var(--accent); }
-        .shot { position: relative; max-width: 420px; margin: 0 auto; }
+        .shot { position: relative; max-width: 420px; margin: 0 auto; overflow: hidden; isolation: isolate; }
         .shot::before {
             content: "";
             position: absolute; inset: 18px -16px -16px 18px;
@@ -168,12 +169,24 @@
         h2 { font-family: "Instrument Serif", serif; font-size: clamp(2rem, 4.5vw, 3.3rem); font-weight: 400; line-height: 1.1; margin-bottom: 12px; }
         .sub { color: var(--muted); max-width: 560px; margin-bottom: 32px; }
 
-        .about { display: grid; gap: 28px; }
-        .panel { background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
-        .about p { color: var(--muted); margin-bottom: 14px; }
-        .photos { display: grid; grid-template-columns: 1.2fr .8fr; gap: 10px; }
-        .photos img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; border-radius: 16px; }
-        .photos img:first-child { grid-row: span 2; min-height: 320px; object-position: top; }
+        .about { display: grid; gap: 20px; min-width: 0; }
+        .panel { background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 20px; overflow: hidden; }
+        .about p { color: var(--muted); margin-bottom: 14px; overflow-wrap: anywhere; }
+        .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; min-width: 0; }
+        .photos img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 16px;
+            min-width: 0;
+        }
+        .photos img:first-child {
+            grid-column: 1 / -1;
+            aspect-ratio: 4 / 5;
+            max-height: 360px;
+        }
 
         .job { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; margin-bottom: 12px; }
         .job-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -265,17 +278,56 @@
             .hero { grid-template-columns: 1.1fr .9fr; }
             .highlights { grid-template-columns: repeat(3, 1fr); }
             .about, .contact, .edu { grid-template-columns: 1fr 1fr; }
+            .photos { grid-template-columns: 1.2fr 0.8fr; }
+            .photos img { height: 100%; min-height: 150px; aspect-ratio: auto; }
+            .photos img:first-child {
+                grid-column: auto;
+                grid-row: span 2;
+                min-height: 340px;
+                max-height: none;
+            }
             .skills { grid-template-columns: 1fr 1fr 1fr; }
             .grid { grid-template-columns: 1fr 1fr; }
             .card.feat { grid-column: 1 / -1; }
         }
         @media (max-width: 879px) {
-            .menu { display: none; position: absolute; top: var(--nav); left: 0; right: 0; flex-direction: column; padding: 14px; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+            .wrap { width: min(var(--max), calc(100% - 28px)); }
+            .menu {
+                display: none;
+                position: fixed;
+                top: var(--nav);
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                padding: 14px;
+                background: var(--bg-2);
+                border-bottom: 1px solid var(--line);
+                z-index: 25;
+            }
             .menu.on { display: flex; }
-            .photos { grid-template-columns: 1fr 1fr; }
-            .photos img:first-child { min-height: 220px; }
+            #home { padding: calc(var(--nav) + 16px) 0 16px; }
+            section { padding: 40px 0; }
+            h1 { font-size: 2.7rem; }
+            .hero { gap: 18px; }
+            .shot { max-width: 260px; }
+            .shot::before, .shot::after { display: none; }
+            .highlights { margin-top: 18px; }
+            .sub { margin-bottom: 18px; }
             .when { text-align: left; }
-            section { padding: 48px 0; }
+            .job-top { flex-direction: column; }
+            .btns .btn { width: 100%; justify-content: center; }
+            .cta .btns .btn { width: auto; }
+            main { padding-bottom: 72px; }
+            footer { padding-bottom: 88px; }
+            .twin-btn { width: 52px; min-height: 52px; padding: 0; justify-content: center; }
+            .twin-btn span { display: none; }
+            .twin {
+                left: 12px;
+                right: 12px;
+                width: auto;
+                bottom: 74px;
+                height: min(68dvh, 540px);
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -526,7 +578,7 @@
         </div>
     </div>
 
-    <button class="twin-btn" type="button" onclick="toggleTwin()"><i class="fas fa-comments"></i> Ask my twin</button>
+    <button class="twin-btn" type="button" onclick="toggleTwin()"><i class="fas fa-comments"></i> <span>Ask my twin</span></button>
     <aside class="twin" id="twinPanel">
         <div class="twin-h">
             <div><h3>Digital Twin</h3><p>Ask about Jesse’s career, skills, and projects.</p></div>
